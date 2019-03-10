@@ -51,20 +51,23 @@ This section of code performs the following steps:
                                       grepl("mean.." , columnNames) | grepl("std.." , columnNames) ))
 13.  Using the Boolean array created in step 12, the script merges it with the dataset containing training and test data to produce a dataset containg training and test mean and standard deviation data.
 	    (justMeansAndStdDevs <- mergedTrainAndTest[,extractMeansAndStdDevs == TRUE])
-14.  After creating this dataset of training and test mean and standard deviation data, the script adds the activity names to this dataset by merging it with the activity labels dataset created in step 4. above.
-            	(meansAndStdDevsWithActivityNames <- merge(justMeansAndStdDevs, actLabels, 
-                                                  by='activityId', all.x = TRUE))
-15.  Renames the columns in the dataset created in step 14. to more meaningful values using a sequence of gsub() steps.
+  
+14.  Renames the columns in the dataset created in step 14. to more meaningful values using a sequence of gsub() steps.
     (colnames(meansAndStdDevsWithActivityNames) <- gsub("^t","Time",
           colnames(meansAndStdDevsWithActivityNames))
 								...
 	        colnames(meansAndStdDevsWithActivityNames) <- gsub("Mag", "Magnitude",
 	           colnames(meansAndStdDevsWithActivityNames)))
-16.  Creates the final tidy dataset by aggregating the values in this dataset by mean by activity and subject.
+15.  Creates the final tidy dataset by aggregating the values in this dataset by mean by activity and subject.
         	(finalTidyDataSet <- aggregate(. ~subjectId + activityId, 
                               meansAndStdDevsWithActivityNames , mean))
+                              
+16.  Adds the activity names to this tiny dataset by merging it with the activity labels dataset created in step 4. above.                                
+           (finalTidyDataSet <- merge(finalTidyDataSet, actLabels, by='activityId', all.x = TRUE))  
+           
 17.  Orders the final tidy dataset by subject and activity.
 	    (finalTidyDataSet <- finalTidyDataSet[order(finalTidyDataSet$subjectId,
 	      finalTidyDataSet$activityId),])
-17.  Writes this data set to the Data directory of the user's working directory.
+	      
+18.  Writes this data set to the Data directory of the user's working directory.
 	      (finalTidyDataSetName <- "./data/finalTidyDataSet.txt")

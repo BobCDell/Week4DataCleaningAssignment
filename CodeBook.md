@@ -215,9 +215,16 @@ TimeBodyAccelerometerSigma()-Z      (g -standard gravity units)
                                              Data Type: Decimal (Normalized between -1 and 1)   
  FreqBodyGyroJerkMagnitudeMeanFreq()       (Hz - Hertz; cycles/second)    
                                              Data Type: Decimal (Normalized between -1 and 1) 
- activityType                           
+ activityType                             Data Type: String value that identifies the 
+                                                  type of activity for which the data was collected:
+                                                   WALKING
+                                                   WALKING_UPSTAIRS
+                                                   WALKING_DOWNSTAIRS
+                                                   SITTING
+                                                   STANDING
+                                                   LAYING
 
 
 ##Sources
-Joris Schut has an example of what should be included in an R codebook, and I have used his template as a guide in creating this codebook (Though I have not adhered to it strictly): https://gist.github.com/JorisSchut/dbc1fc0402f28cad9b41#file-gistfile1-rmd-L1
+Joris Schut has an excellent example of what should be included in an R codebook, and I have used his template as a guide in creating this codebook (Though I have not adhered to it strictly): https://gist.github.com/JorisSchut/dbc1fc0402f28cad9b41#file-gistfile1-rmd-L1
 
