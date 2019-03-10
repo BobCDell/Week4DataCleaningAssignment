@@ -23,7 +23,7 @@ This section of code performs the following steps:
 3. Unzips the data files contained within the zipped data directory, resulting in the creation of the UCI HAR Dataset folder and associated subfolders, and places the data files in the appropriate folder locations under the Data directory.
 	(unzip(zipfile=fileName,exdir=dirName))
 
-The section of code delimited by the "-------/ BEGIN/END DATA EXTRACTION AND COMBINAION /---" borders.
+The section of code delimited by the "-------/ BEGIN/END DATA EXTRACTION AND COMBINATION /---" borders.
 This section of code performs the following steps:
 
 4.  Extracts information from the features (features <- read.table....) and activities 
